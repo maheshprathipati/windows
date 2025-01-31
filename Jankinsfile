@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+    stages {
+        stage('Check Maven Version') {
+            steps {
+                script {
+                    def mvnVersion = sh(script: 'mvn -version', returnStdout: true).trim()
+                    echo "Maven Version:\n${mvnVersion}"
+                }
+            }
+        }
+    }
+}
