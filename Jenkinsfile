@@ -13,7 +13,7 @@ pipeline {
                 }
             }
 
-        }
+        
         stage('DOCKER login'){
             steps{
                 withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]){
@@ -29,6 +29,7 @@ pipeline {
                  bat "docker push ${DOCKER_IMAGE}:${DOCKER_TAG}"
             }
         }
+    }
 }
 
  post {
