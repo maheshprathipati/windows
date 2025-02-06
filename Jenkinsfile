@@ -7,14 +7,14 @@ pipeline {
        
     }
     stages {
-        stage("DOCKER build"){
+        stage('DOCKER build'){
             steps{
                 bat "docker build -t  ${DOCKER_IMAGE}:${DOCKER_TAG} ."
                 }
             }
 
         }
-        stage("DOCKER login"){
+        stage('DOCKER login'){
             steps{
                 withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]){
 
@@ -24,7 +24,7 @@ pipeline {
                  
             }
         }
-        stage("DOCKER PUSH IMAGE"){
+        stage('DOCKER PUSH IMAGE'){
             steps{
                  bat "docker push ${DOCKER_IMAGE}:${DOCKER_TAG}"
             }
