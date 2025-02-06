@@ -34,7 +34,7 @@ pipeline {
  post {
         success {
             echo "Docker image successfully built and pushed: ${DOCKER_IMAGE}:${DOCKER_TAG}"
-        }
+        
         failure {
             echo "Pipeline failed! Check logs for errors."
         }
